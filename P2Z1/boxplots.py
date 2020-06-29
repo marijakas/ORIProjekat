@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
+from prettytable import PrettyTable
 
 def load_data():
     df = pd.read_csv("credit_card_data.csv")
@@ -19,7 +20,25 @@ def load_data():
 
 if __name__ == '__main__':
     X = load_data()
-    X.boxplot(column=['BALANCE', 'PURCHASES', 'INSTALLMENTS_PURCHASES', 'MINIMUM_PAYMENTS'])
+    #X.boxplot(column=['BALANCE', 'PURCHASES', 'INSTALLMENTS_PURCHASES', 'MINIMUM_PAYMENTS'])
+    X.boxplot(column=['BALANCE'])
+    medijana =  X.BALANCE.median() #medijana za kolonu BALANCE
+    srvr = X.BALANCE.mean() #srednja vrednost za kolonu BALANCE
+    min1 =  X.BALANCE.min() #
+    max1 = X.BALANCE.max() #max koji je outlier
+    Q1 = 128.272
+    Q3 = 2054.16
+    IQR = Q3 - Q1
+    min = Q1 - 1.5*IQR
+    max = Q3 + 1.5*IQR
+    #print "Minimalna vrednost ", min #???????
+    #print "Maximalana vrednost ", max
+
+    tabela = PrettyTable()
+    tabela.field_names = ["Kolona", "Minimum", "Medijana", "Maximum", "Srednja vrednost"]
+    tabela.add_row(["BALANCE", round(min1, 3), round(medijana, 3), round(max, 3), round(srvr, 3)])
+    print tabela
+
     #X.boxplot(column=['CASH_ADVANCE_TRX']) #izdvojeno kao zasebno jer se ovi podaci u okviru prvog boxplota ne vide dobro
     #X.boxplot(column=['PRC_FULL_PAYMENT']) #izdvojeno kao zasebno jer se ovi podaci u okviru prvog boxplota ne vide dobro
     plt.show()
