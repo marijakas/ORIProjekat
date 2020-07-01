@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c5ed308-908b-47b7-a4f5-b142d9f61605" name="Default Changelist" comment="" />
+    <list default="true" id="6c5ed308-908b-47b7-a4f5-b142d9f61605" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boxplots.py" beforeDir="false" afterPath="$PROJECT_DIR$/boxplots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prociscenDF.py" beforeDir="false" afterPath="$PROJECT_DIR$/prociscenDF.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1e09JGt6UmPlqdBcXAIcXPvMitV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
@@ -29,7 +39,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.prociscenDF">
+  <component name="RunManager" selected="Python.boxplots">
     <configuration name="boxplots" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="P2Z1" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -116,10 +126,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.prociscenDF" />
         <item itemvalue="Python.boxplots" />
-        <item itemvalue="Python.korelacije" />
+        <item itemvalue="Python.prociscenDF" />
         <item itemvalue="Python.brKlastera" />
+        <item itemvalue="Python.korelacije" />
       </list>
     </recent_temporary>
   </component>
@@ -135,5 +145,16 @@
       <updated>1593447569284</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
