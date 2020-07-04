@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6c5ed308-908b-47b7-a4f5-b142d9f61605" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prociscenDF.py" beforeDir="false" afterPath="$PROJECT_DIR$/prociscenDF.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boxplots.py" beforeDir="false" afterPath="$PROJECT_DIR$/boxplots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pacman_project1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../pacman_project1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pacman_project1/myAgents.py" beforeDir="false" afterPath="$PROJECT_DIR$/../pacman_project1/myAgents.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +24,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ana\Desktop\ORIProjekat\P2Z1" />
       <recent name="C:\Users\Ana\Desktop\P2Z1" />
     </key>
   </component>
@@ -37,7 +40,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.prociscenDF">
+  <component name="RunManager" selected="Python.boxplots">
     <configuration name="boxplots" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="P2Z1" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -124,9 +127,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.prociscenDF" />
         <item itemvalue="Python.boxplots" />
         <item itemvalue="Python.brKlastera" />
+        <item itemvalue="Python.prociscenDF" />
         <item itemvalue="Python.korelacije" />
       </list>
     </recent_temporary>

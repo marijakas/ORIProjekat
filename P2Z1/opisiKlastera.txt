@@ -1,0 +1,34 @@
+****KLASTER 0:
+Korisnici koji pripadaju ovom klasteru, u odnosu na korisnike koji pripadaju drugim klasterima, imaju najmanji minimalni iznos koji je korisnik uplatio 
+na karticu(MINIMUM PAYMENTS), najmanje stanje na racunu dostupno za kupovinu(BALANCE) i najmanji 
+limit na kreditnoj kartici(CREDIT LIMIT), jer je njihov ukupan iznos potrosen na kupovinu mali(PURCHASES).
+
+****KLASTER 1:
+Korisnici koji pripadaju ovom klasteru imaju velik ukupan iznos potrosen na kupovinu(PURCHASES) i ukupan iznos upalcen na 
+karticu(PAYMENTS), a u odnosu na to nemaju velik limit na kredinoj kartici(CREDIT LIMIT).(puno torsi, ali puno i uplacuje, pa zbog toga nema velik limit)
+
+****KLASTER 2:
+Korisnici koji pripadaju ovom klasteru imaju visoko stanje na racunu dostupno za kupovinu(BALANCE) i iznos koji je korisnik
+uplatio unapred(CASHADVANCE), a u odnosu na to ima nizak ukupan iznos potrosen na kupovinu(PURCHASES). 
+
+****KLASTER 3:
+Korisnici koji pripadaju ovom klasteru, u odnosu na korisnike koji pripadaju drugim klasterima, imaju najvece stanje na racunu dostupno za kupovinu(BALANCE), 
+ali malo novca uplacuju unapred(CASH ADVANCE), zbog toga imaju veci limit na kreditnoj kartici(CREDIT LIMIT).
+
+****KLASTER 4:
+Korisnici koji pripadaju ovom klasteru, u odnosu na korisnike koji pripadaju drugim klasterima, imaju najveci ukupan iznos potrosen na kupovinu(PURCHASES), 
+ali imaju i najveci ukupan iznos uplacen na karticu(PAYMENTS), u odnosu na to limit na kreditnoj kartici im je mali, ali najveci u odnosu na korisnike iz 
+drugih klastera(CREDIT LIMIT).
+
+****KLASTER 5:
+Korisnici koji pripadaju ovom klasteru, u odnosu na korisnike koji pripadaju drugim klasterima, imaju najveci iznos koji je korisnik uplatio unapred(CAHS ADVANCE)
+ujedno i najveci broj transakcija sa uplacenim novcem unapred(CASH ADVANCE TRX), zbog toga imaju velik ukupan iznos uplacen na kartici(PAYMENTS). Ali ovi korisnici
+trose malo na kupovinu(PURCHASES), pa zbog toga imaju i mali limit na kreditnoj kartici(CREDIT LIMIT). 
+
+****KLASTER 6:
+Korisnici koji pripadaju ovom klasteru imaju nizak nivo iznosa koji je korisnik uplatio unapred(CASHADVANCE) i u donosu na to velik limit
+na kreditnoj kartici(CREDIT LIMIT).
+
+****KLASTER 7:
+Korisnici koji pripadaju ovom klasteru, u odnosu na korisnike koji pripadaju drugim klasterima, imaju najveci minimalni iznos koji je korisnik uplatio 
+na karticu(MINIMUM PAYMENTS), malo novca uplacuju unapred(CASH ADVANCE) i malo novca trose na kupovinu(PURCHASES).
