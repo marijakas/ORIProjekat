@@ -23,7 +23,7 @@ IMPORTANT
 `agent` defines which agent you will use. By default, it is set to ClosestDotAgent,
 but when you're ready to test your own agent, replace it with MyAgent
 """
-def createAgents(num_pacmen, agent='ClosestDotAgent'):
+def createAgents(num_pacmen, agent='MyAgent'):
     return [eval(agent)(index=i) for i in range(num_pacmen)]
 
 class MyAgent(Agent):
@@ -31,6 +31,39 @@ class MyAgent(Agent):
     Implementation of your agent.
     """
 
+    def findPathCustom(self, gameState):
+        """
+        Returns a path (a list of actions) to the closest dot, starting from
+        gameState.
+        """
+        # Here are some useful elements of the startState
+        startPosition = gameState.getPacmanPosition(self.index)
+        food = gameState.getFood()
+        walls = gameState.getWalls()
+        problem = AnyFoodSearchProblem(gameState, self.index)
+
+        allAgentsPositons = gameState.getPacmanPositions()  # Get all agents position
+        allAgentsPositons.remove(startPosition)  # Remove curent agent from all agents list
+        "*** YOUR CODE HERE ***"
+        fringe = util.Queue()
+        visited = []  # List of already visited nodes
+        action_list = []  # List of actions taken to get to the current node
+        total_cost = 0  # Cost to get to the current node
+        initial = problem.getStartState()  # Starting state of the problem
+
+        fringe.push((initial, action_list))
+
+        while fringe:
+            node, actions = fringe.pop()
+            if not node in visited:
+                if not node in allAgentsPositons:
+                    visited.append(node)
+                    if problem.isGoalState(node):
+                        return actions
+                    successors = problem.getSuccessors(node)
+                    for successor in successors:
+                        coordinate, direction, cost = successor
+                        fringe.push((coordinate, actions + [direction]))
     def getAction(self, state):
         """
         Returns the next action the agent will take
@@ -38,7 +71,7 @@ class MyAgent(Agent):
 
         "*** YOUR CODE HERE ***"
 
-        raise NotImplementedError()
+        return self.findPathCustom(state)[0]
 
     def initialize(self):
         """
@@ -49,7 +82,7 @@ class MyAgent(Agent):
 
         "*** YOUR CODE HERE"
 
-        raise NotImplementedError()
+        # raise NotImplementedError()
 
 """
 Put any other SearchProblems or search methods below. You may also import classes/methods in
