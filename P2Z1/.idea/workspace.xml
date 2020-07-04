@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c5ed308-908b-47b7-a4f5-b142d9f61605" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boxplots.py" beforeDir="false" afterPath="$PROJECT_DIR$/boxplots.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prociscenDF.py" beforeDir="false" afterPath="$PROJECT_DIR$/prociscenDF.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,7 +37,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.boxplots">
+  <component name="RunManager" selected="Python.prociscenDF">
     <configuration name="boxplots" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="P2Z1" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -126,8 +124,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.boxplots" />
         <item itemvalue="Python.prociscenDF" />
+        <item itemvalue="Python.boxplots" />
         <item itemvalue="Python.brKlastera" />
         <item itemvalue="Python.korelacije" />
       </list>
@@ -151,7 +149,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.cluster import KMeans
+from sklearn.decomposition import  PCA
 import glob
 import matplotlib.pyplot as plt
 
@@ -34,7 +35,26 @@ def kmeans(X):
     else:
         print 'WARNING: This file already exists!'
 
+def principal_component_analysis(data, cluster_num):
+    pca = PCA(n_components=2)
+    data_pca = pca.fit_transform(data)
+
+    plt.figure(figsize=(10, 8))
+
+    plt.title('KMeans Clustering with PCA')
+    plt.xlabel('PC1')
+    plt.ylabel('PC2')
+
+    model = KMeans(n_clusters=cluster_num).fit(data_pca)
+    model_label = model.labels_
+
+    scatter = plt.scatter(data_pca[:, 0], data_pca[:, 1], c=model_label, cmap='Spectral')
+    plt.colorbar(scatter)
+    plt.show()
+
 if __name__ == '__main__':
     X = load_data()
     kmeans(X)
+    cluster_num = 8
+    principal_component_analysis(X, cluster_num)
     #print X
