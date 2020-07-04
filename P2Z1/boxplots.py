@@ -26,16 +26,22 @@ if __name__ == '__main__':
     klaster7 = X.loc[X['cluster'] == 7]
     #print (klaster7)
 
-    #X.boxplot(column=['BALANCE', 'PURCHASES', 'INSTALLMENTS_PURCHASES', 'MINIMUM_PAYMENTS']) IZBIRS
-
-    #klaster0.boxplot(column=['BALANCE', 'PURCHASES', 'CASH_ADVANCE', 'CASH_ADVANCE_TRX', 'PURCHASES_TRX', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT'])
-    #klaster1.boxplot(column=['BALANCE', 'PURCHASES', 'CASH_ADVANCE', 'CASH_ADVANCE_TRX', 'PURCHASES_TRX', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT'])
-    #klaster2.boxplot(column=['BALANCE', 'PURCHASES', 'CASH_ADVANCE', 'CASH_ADVANCE_TRX', 'PURCHASES_TRX', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT'])
-    #klaster3.boxplot(column=['BALANCE', 'PURCHASES', 'CASH_ADVANCE', 'CASH_ADVANCE_TRX', 'PURCHASES_TRX', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT'])
-    #klaster4.boxplot(column=['BALANCE', 'PURCHASES', 'CASH_ADVANCE', 'CASH_ADVANCE_TRX', 'PURCHASES_TRX', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT'])
-    #klaster5.boxplot(column=['BALANCE', 'PURCHASES', 'CASH_ADVANCE', 'CASH_ADVANCE_TRX', 'PURCHASES_TRX', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT'])
-    #klaster6.boxplot(column=['BALANCE', 'PURCHASES', 'CASH_ADVANCE', 'CASH_ADVANCE_TRX', 'PURCHASES_TRX', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT'])
-    klaster7.boxplot(column=['BALANCE', 'PURCHASES', 'CASH_ADVANCE', 'CASH_ADVANCE_TRX', 'PURCHASES_TRX', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT'])
+    #klaster0.boxplot(column=['BALANCE', 'PURCHASES', 'CASH_ADVANCE', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT'])
+    #klaster0.boxplot(column=['CASH_ADVANCE_TRX', 'PURCHASES_TRX'])
+    #klaster1.boxplot(column=['BALANCE', 'PURCHASES', 'CASH_ADVANCE', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT'])
+    #klaster1.boxplot(column=['CASH_ADVANCE_TRX', 'PURCHASES_TRX'])
+    #klaster2.boxplot(column=['BALANCE', 'PURCHASES', 'CASH_ADVANCE', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT'])
+    #klaster2.boxplot(column=['CASH_ADVANCE_TRX', 'PURCHASES_TRX'])
+    #klaster3.boxplot(column=['BALANCE', 'PURCHASES', 'CASH_ADVANCE', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT'])
+    #klaster3.boxplot(column=['CASH_ADVANCE_TRX', 'PURCHASES_TRX'])
+    #klaster4.boxplot(column=['BALANCE', 'PURCHASES', 'CASH_ADVANCE', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT'])
+    #klaster4.boxplot(column=['CASH_ADVANCE_TRX', 'PURCHASES_TRX'])
+    #klaster5.boxplot(column=['BALANCE', 'PURCHASES', 'CASH_ADVANCE', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT'])
+    #klaster5.boxplot(column=['CASH_ADVANCE_TRX', 'PURCHASES_TRX'])
+    #klaster6.boxplot(column=['BALANCE', 'PURCHASES', 'CASH_ADVANCE', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT'])
+    #klaster6.boxplot(column=['CASH_ADVANCE_TRX', 'PURCHASES_TRX'])
+    #klaster7.boxplot(column=['BALANCE', 'PURCHASES', 'CASH_ADVANCE', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT'])
+    #klaster7.boxplot(column=['CASH_ADVANCE_TRX', 'PURCHASES_TRX'])
 
     medijanaK0 =  klaster0.BALANCE.median() #medijana za kolonu BALANCE
     srvr = klaster0.BALANCE.mean() #srednja vrednost za kolonu BALANCE
@@ -151,6 +157,4 @@ if __name__ == '__main__':
     tabela7.add_row([7, "PRC_FULL_PAYMENT", round(klaster7.PRC_FULL_PAYMENT.min(), 3), round(klaster7.PRC_FULL_PAYMENT.median(), 3),round(klaster7.PRC_FULL_PAYMENT.max(), 3), round(klaster7.PRC_FULL_PAYMENT.mean(), 3)])
     print tabela7
 
-    #X.boxplot(column=['CASH_ADVANCE_TRX']) #izdvojeno kao zasebno jer se ovi podaci u okviru prvog boxplota ne vide dobro
-    #X.boxplot(column=['PRC_FULL_PAYMENT']) #izdvojeno kao zasebno jer se ovi podaci u okviru prvog boxplota ne vide dobro
     plt.show()
