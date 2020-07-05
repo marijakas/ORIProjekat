@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc8bd69c-0de4-4a7f-927a-ce803631977f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../P2Z1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../P2Z1/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myAgents.py" beforeDir="false" afterPath="$PROJECT_DIR$/myAgents.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchProblems.py" beforeDir="false" afterPath="$PROJECT_DIR$/searchProblems.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +19,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../P2Z1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -87,5 +87,12 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="problem.goal" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
