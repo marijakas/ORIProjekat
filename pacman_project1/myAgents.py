@@ -11,67 +11,32 @@
 # Student side autograding was added by Brad Miller, Nick Hay, and
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
-from game import Agent
+from game import Agent, Directions
 from searchProblems import PositionSearchProblem
 
 import util
 import time
 import search
-
+import random
+from util import manhattanDistance
 """
 IMPORTANT
 `agent` defines which agent you will use. By default, it is set to ClosestDotAgent,
 but when you're ready to test your own agent, replace it with MyAgent
 """
+
+
 def createAgents(num_pacmen, agent='MyAgent'):
     return [eval(agent)(index=i) for i in range(num_pacmen)]
+
 
 class MyAgent(Agent):
     """
     Implementation of your agent.
     """
 
-    def findPathCustom(self, gameState):
-        """
-        Returns a path (a list of actions) to the closest dot, starting from
-        gameState.
-        """
-        # Here are some useful elements of the startState
-        startPosition = gameState.getPacmanPosition(self.index)
-        food = gameState.getFood()
-        walls = gameState.getWalls()
-        problem = AnyFoodSearchProblem(gameState, self.index)
 
-        allAgentsPositons = gameState.getPacmanPositions()  # Get all agents position
-        allAgentsPositons.remove(startPosition)  # Remove curent agent from all agents list
-        "*** YOUR CODE HERE ***"
-        fringe = util.Queue()
-        visited = []  # List of already visited nodes
-        action_list = []  # List of actions taken to get to the current node
-        total_cost = 0  # Cost to get to the current node
-        initial = problem.getStartState()  # Starting state of the problem
-
-        fringe.push((initial, action_list))
-
-        while fringe:
-            node, actions = fringe.pop()
-            if not node in visited:
-                if not node in allAgentsPositons:
-                    visited.append(node)
-                    if problem.isGoalState(node):
-                        return actions
-                    successors = problem.getSuccessors(node)
-                    for successor in successors:
-                        coordinate, direction, cost = successor
-                        fringe.push((coordinate, actions + [direction]))
-    def getAction(self, state):
-        """
-        Returns the next action the agent will take
-        """
-
-        "*** YOUR CODE HERE ***"
-
-        return self.findPathCustom(state)[0]
+    chasingGoal = []
 
     def initialize(self):
         """
@@ -82,12 +47,82 @@ class MyAgent(Agent):
 
         "*** YOUR CODE HERE"
 
-        # raise NotImplementedError()
+        self.svePojedeno = False
+        self.actions = []
+
+
+    def getAction(self, state):
+        """
+        Returns the next action the agent will take
+        """
+
+        # problem = MyFoodSearchProblem(state, self.index)
+
+        if self.svePojedeno:
+            return Directions.STOP
+        else:
+
+            if not self.actions:
+                # actions = search.aStarSearch(problem)
+                # print(actions)
+                actions = search.astar(MyFoodSearchProblem(state, self.index))  # implementirani a* iz search.py koji dobija taj nas food problem kao param
+                self.actions = actions
+
+            if self.actions:
+                nextAction = self.actions[0]
+                self.actions.remove(nextAction)
+                return nextAction
+
+            else:
+                self.svePojedeno = True
+                return Directions.STOP
+
+
+
 
 """
 Put any other SearchProblems or search methods below. You may also import classes/methods in
 search.py and searchProblems.py. (ClosestDotAgent as an example below)
 """
+
+
+class MyFoodSearchProblem(PositionSearchProblem):
+
+    def __init__(self, gameState, agentIndex):
+        "Stores information from the gameState.  You don't need to change this."
+        # Store the food for later reference
+        self.foodPositions = gameState.getFood().asList()
+
+        # Store info for the PositionSearchProblem (no need to change this)
+        self.walls = gameState.getWalls()
+        self.startState = gameState.getPacmanPosition(agentIndex)
+        self.costFn = lambda x: 1
+
+        self._visited, self._visitedlist, self._expanded = {}, [], 0  # DO NOT CHANGE
+
+        self.brojAgenata = gameState.getNumPacmanAgents()
+        self.agentIndex = agentIndex
+
+        avgFood = len(self.foodPositions) // self.brojAgenata + 1
+        self.foodByAgent = self.foodPositions[agentIndex * avgFood: (agentIndex + 1) * avgFood]
+        print(self.foodByAgent)
+
+    def isGoalState(self, state):
+        if len(self.foodPositions) <= self.brojAgenata:
+            return state in self.foodPositions
+        if state in self.foodPositions:
+            if (state in self.foodByAgent) and (state not in MyAgent.chasingGoal):
+                MyAgent.chasingGoal.append(state)
+                return True
+            elif (manhattanDistance(state, self.startState) <= (1 + self.agentIndex) * (1 + self.agentIndex)) \
+                    and (state not in MyAgent.chasingGoal):
+                MyAgent.chasingGoal.append(state)
+                return True
+            else:
+                return state in self.foodByAgent
+        else:
+            return False
+
 
 class ClosestDotAgent(Agent):
 
@@ -125,7 +160,6 @@ class ClosestDotAgent(Agent):
 
     def getAction(self, state):
         return self.findPathToClosestDot(state)[0]
-
 class AnyFoodSearchProblem(PositionSearchProblem):
     """
     A search problem for finding a path to any food.
@@ -149,9 +183,12 @@ class AnyFoodSearchProblem(PositionSearchProblem):
         # Store info for the PositionSearchProblem (no need to change this)
         self.walls = gameState.getWalls()
         self.startState = gameState.getPacmanPosition(agentIndex)
+        self.goal=gameState.getPacmanPosition(agentIndex)
         self.costFn = lambda x: 1
         self._visited, self._visitedlist, self._expanded = {}, [], 0 # DO NOT CHANGE
 
+        self.agentIndex=agentIndex
+        self.foodPositions = self.food.asList()
     def isGoalState(self, state):
         """
         The state is Pacman's position. Fill this in with a goal test that will
@@ -160,8 +197,7 @@ class AnyFoodSearchProblem(PositionSearchProblem):
         x,y = state
 
 
-        foodPositions = self.food.asList()
+        #foodPositions = self.food.asList()
 
 
-        return (x, y) in foodPositions
-
+        return (x, y) in self.foodPositions
