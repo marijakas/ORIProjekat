@@ -13,7 +13,7 @@
 
 from game import Agent, Directions
 from searchProblems import PositionSearchProblem
-
+import math
 import util
 import time
 import search
@@ -36,7 +36,7 @@ class MyAgent(Agent):
     """
 
 
-    chasingGoal = []
+    rezervisanaHrana = []
 
     def initialize(self):
         """
@@ -65,7 +65,7 @@ class MyAgent(Agent):
             if not self.actions:
                 # actions = search.aStarSearch(problem)
                 # print(actions)
-                actions = search.astar(MyFoodSearchProblem(state, self.index))  # implementirani a* iz search.py koji dobija taj nas food problem kao param
+                actions = search.astar(MyAgentFoodSearchProblem(state, self.index))  # implementirani a* iz search.py koji dobija taj nas food problem kao param
                 self.actions = actions
 
             if self.actions:
@@ -76,17 +76,12 @@ class MyAgent(Agent):
             else:
                 self.svePojedeno = True
                 return Directions.STOP
-
-
-
-
 """
 Put any other SearchProblems or search methods below. You may also import classes/methods in
 search.py and searchProblems.py. (ClosestDotAgent as an example below)
 """
 
-
-class MyFoodSearchProblem(PositionSearchProblem):
+class MyAgentFoodSearchProblem(PositionSearchProblem):
 
     def __init__(self, gameState, agentIndex):
         "Stores information from the gameState.  You don't need to change this."
@@ -99,27 +94,44 @@ class MyFoodSearchProblem(PositionSearchProblem):
         self.costFn = lambda x: 1
 
         self._visited, self._visitedlist, self._expanded = {}, [], 0  # DO NOT CHANGE
+        visina = gameState.getHeight()
+        sirina = gameState.getWidth()
+        self.dijagonala = math.sqrt(visina*visina + sirina*sirina)
 
         self.brojAgenata = gameState.getNumPacmanAgents()
         self.agentIndex = agentIndex
 
-        avgFood = len(self.foodPositions) // self.brojAgenata + 1
-        self.foodByAgent = self.foodPositions[agentIndex * avgFood: (agentIndex + 1) * avgFood]
-        print(self.foodByAgent)
-
+        prosecnaHrana = int(len(self.foodPositions) / self.brojAgenata) #Koliko bi svaki agent u proseku trebao da pojede hrane
+        #print(prosecnaHrana)
+        # print(len(self.foodPositions))
+        #print(self.foodPositions) #lista svih tabplova sa lokacijama hrane na mapi
+        self.podelaHrane = slice(agentIndex * prosecnaHrana, (agentIndex + 1) * prosecnaHrana) #podela hrane po agentima
+        self.hranaPoAgentu = self.foodPositions[self.podelaHrane] #lista hrane koju ce on da jede, i to ide do indeksa hrane koja je predvidjena za sledeceg agenta. Ne uzimajuci u obriz tu hranu koja pripada sledecem.
+        #print(self.foodByAgent)
+        # print("ONO PRVO", agentIndex * prosecnaHrana)
+        # print("ONO DRUGO", (agentIndex + 1) * prosecnaHrana)
     def isGoalState(self, state):
+        """
+            The state is Pacman's position. Fill this in with a goal test that will
+            complete the problem definition.
+        """
         if len(self.foodPositions) <= self.brojAgenata:
             return state in self.foodPositions
         if state in self.foodPositions:
-            if (state in self.foodByAgent) and (state not in MyAgent.chasingGoal):
-                MyAgent.chasingGoal.append(state)
+            #dodeljen je meni i ni jedan drugi agent tu hranu nije postavio za svoj trenutni cilj
+            if (state in self.hranaPoAgentu) and (state not in MyAgent.rezervisanaHrana):
+                MyAgent.rezervisanaHrana.append(state)
+                print("eve mee")
                 return True
-            elif (manhattanDistance(state, self.startState) <= (1 + self.agentIndex) * (1 + self.agentIndex)) \
-                    and (state not in MyAgent.chasingGoal):
-                MyAgent.chasingGoal.append(state)
+            #blizu mi je hrana i ni jedan drugi agent tu hranu nije postavio za svoj trenutni cilj
+            elif (manhattanDistance(state, self.startState) <= (1 + self.agentIndex) * (1 + self.agentIndex)) and (state not in MyAgent.rezervisanaHrana):
+                print("start" , self.startState) #pozicija pakmena
+                print("state" ,  state) #pozicija najblize hrane
+
+                MyAgent.rezervisanaHrana.append(state)
                 return True
             else:
-                return state in self.foodByAgent
+                return state in self.hranaPoAgentu
         else:
             return False
 
